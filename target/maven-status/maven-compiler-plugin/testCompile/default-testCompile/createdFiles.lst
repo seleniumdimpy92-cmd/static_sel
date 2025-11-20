@@ -1,0 +1,5 @@
+com\example\tests\ui\BaseTest.class
+com\example\tests\ui\LoginSuccessTest.class
+com\example\tests\ui\LoginFailureTest.class
+com\example\tests\api\GetUserAPITest.class
+com\example\tests\api\NegativeAPITest.class
