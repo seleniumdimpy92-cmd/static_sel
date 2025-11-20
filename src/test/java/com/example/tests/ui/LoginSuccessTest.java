@@ -13,6 +13,6 @@ public class LoginSuccessTest extends BaseTest {
         LoginPage page = new LoginPage();
         page.open();
         page.login("tomsmith", "SuperSecretPassword!");
-        Assert.assertTrue(page.isLoginSuccessful(), "Expected login to be successful");
+        Assert.assertTrue(page.isLoginSuccessful(), "Expected login to be successful.");
     }
 }
