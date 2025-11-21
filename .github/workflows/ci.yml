@@ -4,7 +4,7 @@ on:
   push:
   pull_request:
 
-  # Scheduled daily run at 07:00 AM IST (01:30 UTC).
+  # Scheduled daily run at 07:00 AM IST (01:30 UTC)
   schedule:
     - cron: "30 1 * * *"
 
