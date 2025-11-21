@@ -8,8 +8,6 @@ This repository is a starter automation framework built with:
 - Allure (reporting)
 - WebDriverManager (driver management)
 
-This implementation follows the assessment instructions provided in the uploaded brief: 
-`/mnt/data/Assessment_ Build an Automation Framework From Scratch (1) (1).pdf`. See original file for requirements. fileciteturn0file0
 
 ## How to run locally (Linux / macOS / WSL)
 - Install Java 17 and Maven
