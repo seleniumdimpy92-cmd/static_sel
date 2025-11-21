@@ -3,8 +3,10 @@ name: Java Selenium CI
 on:
   push:
   pull_request:
+
+  # Scheduled daily run at 07:00 AM IST (01:30 UTC)
   schedule:
-    - cron: "30 1 * * *"  # Runs daily at 7:00 AM IST
+    - cron: "30 1 * * *"
 
 jobs:
   test:
@@ -12,7 +14,7 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
 
     - name: Set up Java 17
       uses: actions/setup-java@v4
@@ -32,38 +34,3 @@ jobs:
       with:
         name: allure-results
         path: target/allure-results
-
-    - name: Send Test Report Email
-      if: always()
-      uses: dawidd6/action-send-mail@v3
-      with:
-        # Gmail SMTP
-        server_address: smtp.gmail.com
-        server_port: 587
-        secure: true
-
-        # Login
-        username: ${{ secrets.SMTP_USERNAME }}     # seleniumdimpy92@gmail.com
-        password: ${{ secrets.SMTP_PASSWORD }}     # Gmail App Password
-
-        from: ${{ secrets.MAIL_FROM }}             # seleniumdimpy92@gmail.com
-        to: ${{ secrets.MAIL_TO }}                 # list of recipients
-
-        subject: "Selenium CI Report - Run #${{ github.run_number }} - ${{ job.status }}"
-        body: |
-          Hello,
-
-          The Selenium CI run has finished.
-
-          Repository: ${{ github.repository }}
-          Run Number: ${{ github.run_number }}
-          Status: ${{ job.status }}
-          Triggered By: ${{ github.event_name }}
-
-          The HTML report is attached.
-
-          Regards,
-          CI Automation Bot
-
-        attachments: |
-          target/allure-results
