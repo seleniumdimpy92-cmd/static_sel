@@ -7,8 +7,6 @@
 - **Tests**: separated into UI and API packages; TestNG manages execution and data-driven tests.
 - **Reporting**: Allure collects test results, attachments and steps.
 
-## Folder structure
-See top-level README. The structure is designed to scale: add more pages under `pages/`, services under `api/` and helpers in `utils/`.
 
 ## How framework handles flaky tests & sensitive data
 - Flaky tests: use retry analyzer (not included by default), explicit waits, and test tagging for smoke/regression.
@@ -19,3 +17,46 @@ See top-level README. The structure is designed to scale: add more pages under `
 - TestNG: flexible data providers and groupings.
 - Rest-Assured: simple API test DSL.
 - Allure: rich HTML reporting that's CI-friendly.
+
+ ## DESIGN DOCUMENT OF POM FRAMEWORK
+
+### FOLDER STRUCTURE OF POM FRAMEWORK: -
+
+project-root/
+├─ pom.xml
+├─ README.md
+├─ src/
+│  ├─ main/
+│  │  └─ java/com/example/framework/
+│  │     ├─ config/         # config classes
+│  │     ├─ utils/          # helpers (CSV reader, HTTP utils, logger)
+│  │     └─ reporting/      # Extent manager/listener
+│  └─ test/
+│     └─ java/com/example/tests/
+│        ├─ ui/
+│        │  ├─ pages/
+│        │  ├─ tests/
+│        │  └─ base/
+│        └─ api/
+│           ├─ tests/
+│           └─ base/
+├─ resources/
+│  ├─ testdata/
+│  │  └─ login-data.csv
+│  └─ config.properties
+└─ reports/
+
+TECH CHOICE: -
+
+
+A. Java stack (preferred given candidate background)
+● Selenium WebDriver + TestNG (or JUnit)
+● Maven for build
+● Rest Assured for API tests
+● Allure/Extent for reports
+● Git (push to GitHub/GitLab)
+
+
+
+
+
